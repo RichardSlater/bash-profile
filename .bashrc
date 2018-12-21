@@ -108,3 +108,18 @@ fi
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+
+# PATH management function
+add_to_PATH () {
+  for d; do
+    d=$({ cd -- "$d" && { pwd -P || pwd; } } 2>/dev/null)  # canonicalize symbolic links
+    if [ -z "$d" ]; then continue; fi  # skip nonexistent directory
+    case ":$PATH:" in
+      *":$d:"*) :;;
+      *) PATH=$PATH:$d;;
+    esac
+  done
+}
+
+# import the /.local/bin into the PATH
+add_to_PATH $HOME/.local/bin
