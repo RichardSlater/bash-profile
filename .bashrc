@@ -123,3 +123,19 @@ add_to_PATH () {
 
 # import the /.local/bin into the PATH
 add_to_PATH $HOME/.local/bin
+
+# configure git to work with WSL
+git config --global user.name "Richard Slater"
+git config --global user.email "webmaster@slaterfamily.name"
+git config --global core.editor vim
+git config --global color.ui true
+git config --global core.autocrlf true
+git config --global merge.tool vimdiff
+git config --global branch.autosetupmerge true
+git config --global push.default simple
+git config --global pull.rebase true
+git config --global commit.gpgsign true
+git config --global user.signingkey 3B96880F5CCABB43B0B7B13EBF1642930D0FED43
+
+# configure GPG PIN entry
+export GPG_TTY=$(tty)
