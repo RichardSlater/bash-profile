@@ -139,3 +139,6 @@ git config --global user.signingkey 3B96880F5CCABB43B0B7B13EBF1642930D0FED43
 
 # configure GPG PIN entry
 export GPG_TTY=$(tty)
+
+# enable access to Docker for Windows
+export DOCKER_HOST=tcp://localhost:2375
